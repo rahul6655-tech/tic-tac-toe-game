@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="Css/tic_tac_toe.css">
+</head>
+
+<body>
+
+<div class="tic_tac_toe_box">
+<div class="tic_tac_toe_wrapper">
+
+    <div class="player_name">
+        <div class="player_1">
+            <span class="symbolX">X</span>
+            <div class="player_name_wrapper">
+                <span>Player 1</span>
+                <p class="move" id="move_num_1">0</p>
+            </div>
+        </div>
+
+        <div class="player_2">
+            <span class="symbolX">O</span>
+            <div class="player_name_wrapper">
+                <span>Player 2</span>
+                <p class="move" id="move_num_2">0</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="sccreen">
+        <div class="box" id="1" onclick="myfunc(1)"></div>
+        <div class="box" id="2" onclick="myfunc(2)"></div>
+        <div class="box" id="3" onclick="myfunc(3)"></div>
+        <div class="box" id="4" onclick="myfunc(4)"></div>
+        <div class="box" id="5" onclick="myfunc(5)"></div>
+        <div class="box" id="6" onclick="myfunc(6)"></div>
+        <div class="box" id="7" onclick="myfunc(7)"></div>
+        <div class="box" id="8" onclick="myfunc(8)"></div>
+        <div class="box" id="9" onclick="myfunc(9)"></div>
+    </div>
+
+    <div class="sccreen_bottom">
+        <a class="reset_btn" onclick="resetall()">Reset</a>
+    </div>
+
+</div>
+</div>
+
+<script>
+var a = 0, b = 0;
+var flag = true;
+var gameOver = false;
+
+function myfunc(id){
+
+    if(gameOver) return;   // stop clicking after win
+
+    let box = document.getElementById(id);
+
+    if(box.innerText == ""){
+        if(flag){
+            box.innerHTML = "<span class='x_symbol'>X</span>";
+            a++;
+            document.getElementById("move_num_1").innerText = a;
+        }else{
+            box.innerHTML = "<span class='o_symbol'>O</span>";
+            b++;
+            document.getElementById("move_num_2").innerText = b;
+        }
+        flag = !flag;
+    }
+
+    checkWinner();
+}
+
+function checkWinner(){
+
+    let boxes = [];
+    for(let i=1;i<=9;i++){
+        boxes[i] = document.getElementById(i).innerText;
+    }
+
+    let wins = [
+        [1,2,3],[4,5,6],[7,8,9],
+        [1,4,7],[2,5,8],[3,6,9],
+        [1,5,9],[3,5,7]
+    ];
+
+    for(let w of wins){
+        if(boxes[w[0]] != "" &&
+           boxes[w[0]] == boxes[w[1]] &&
+           boxes[w[1]] == boxes[w[2]]){
+
+            gameOver = true;
+
+            setTimeout(()=>{
+                alert("Player " + boxes[w[0]] + " Wins 🎉");
+                resetall();
+            },500);
+
+            return;
+        }
+    }
+
+    // 🔥 Check Tie Condition
+    let filled = true;
+    for(let i=1;i<=9;i++){
+        if(document.getElementById(i).innerText == ""){
+            filled = false;
+            break;
+        }
+    }
+
+    if(filled && !gameOver){
+        gameOver = true;
+
+        setTimeout(()=>{
+            alert("It's a Tie 🤝");
+            resetall();
+        },500);
+    }
+}
+
+function resetall(){
+    for(let i=1;i<=9;i++){
+        document.getElementById(i).innerHTML = "";
+    }
+    a = 0;
+    b = 0;
+    flag = true;
+    gameOver = false;
+
+    document.getElementById("move_num_1").innerText = "0";
+    document.getElementById("move_num_2").innerText = "0";
+}
+</script>
+
+
+</body>
+</html>

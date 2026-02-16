@@ -1,0 +1,153 @@
+:root {
+    --background-bg-color: #232C46;
+    --box-background-color: #3E4E6B;
+    --player1-color-bg: #7ABA3B;
+    --player2-color-bg: #FD9D8E;
+    --reset-btn-bg-color: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.tic_tac_toe_box {
+    background-color: var(--background-bg-color);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.tic_tac_toe_wrapper {
+    width: 100%;
+    max-width: 400px;
+}
+
+.player_name {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.player_1,
+.player_2 {
+    background: var(--box-background-color);
+    flex: 1;
+    padding: 10px;
+    border-radius: 12px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.player_name_wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    color: #fff;
+    font-weight: 600;
+}
+
+p.move {
+    margin: 0;
+}
+
+span.symbolX {
+    font-size: 28px;
+    font-weight: 800;
+}
+
+.player_1 span.symbolX {
+    color: var(--player1-color-bg);
+}
+
+.player_2 span.symbolX {
+    color: var(--player2-color-bg);
+}
+
+.sccreen {
+    background-color: var(--box-background-color);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    padding: 15px;
+    border-radius: 15px;
+    aspect-ratio: 1/1;
+}
+
+.sccreen .box {
+    background-color: var(--background-bg-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-size: 50px;
+    font-weight: 700;
+    cursor: pointer;
+    aspect-ratio: 1/1;
+    transition: 0.2s;
+}
+
+.sccreen .box:hover {
+    transform: scale(1.05);
+}
+
+.x_symbol {
+    color: #7ABA3B;
+}
+
+.o_symbol {
+    color: #FD9D8E;
+}
+
+.sccreen_bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    margin-top: 20px;
+    border-radius: 12px;
+    padding: 10px;
+}
+
+.reset_btn {
+    border: none;
+    background: none;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+}
+
+@media (max-width: 480px) {
+
+    .tic_tac_toe_wrapper {
+        max-width: 350px;
+    }
+
+    .player_name_wrapper {
+        font-size: 14px;
+    }
+
+    span.symbolX {
+        font-size: 24px;
+    }
+
+    .sccreen .box {
+        font-size: 10vw;
+    }
+}
+
+@media (min-width: 768px) {
+    .sccreen .box {
+        font-size: 50px;
+    }
+}
