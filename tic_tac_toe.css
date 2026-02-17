@@ -127,10 +127,11 @@ span.symbolX {
     text-align: center;
 }
 
-@media (max-width: 480px) {
+/* ================= MOBILE (0px - 767px) ================= */
+@media (max-width: 767px) {
 
     .tic_tac_toe_wrapper {
-        max-width: 350px;
+        max-width: 320px;
     }
 
     .player_name_wrapper {
@@ -138,16 +139,49 @@ span.symbolX {
     }
 
     span.symbolX {
-        font-size: 24px;
+        font-size: 22px;
     }
 
     .sccreen .box {
-        font-size: 10vw;
+        font-size: 9vw;
     }
 }
 
-@media (min-width: 768px) {
+
+/* ================= TABLET (768px - 991px) ================= */
+@media (min-width: 768px) and (max-width: 991px) {
+
+    .tic_tac_toe_wrapper {
+        max-width: 380px;
+    }
+
+    .sccreen .box {
+        font-size: 45px;
+    }
+}
+
+
+/* ================= LAPTOP (992px - 1199px) ================= */
+@media (min-width: 992px) and (max-width: 1199px) {
+
+    .tic_tac_toe_wrapper {
+        max-width: 400px;
+    }
+
     .sccreen .box {
         font-size: 50px;
+    }
+}
+
+
+/* ================= DESKTOP (1200px - 1400px+) ================= */
+@media (min-width: 1200px) {
+
+    .tic_tac_toe_wrapper {
+        max-width: 420px;
+    }
+
+    .sccreen .box {
+        font-size: 55px;
     }
 }
