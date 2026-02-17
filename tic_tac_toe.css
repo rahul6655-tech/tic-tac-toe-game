@@ -20,11 +20,11 @@ body {
 
 .tic_tac_toe_box {
     background-color: var(--background-bg-color);
-    min-height: 100dvh; /* FIXED mobile height issue */
+    min-height: 100dvh; /* mobile safe height */
     display: flex;
-    align-items: center;
     justify-content: center;
-    padding: 15px;
+    align-items: center;
+    padding: 20px 15px;
 }
 
 .tic_tac_toe_wrapper {
@@ -45,7 +45,7 @@ body {
 .player_2 {
     background: var(--box-background-color);
     flex: 1;
-    padding: 10px;
+    padding: 12px;
     border-radius: 12px;
     display: flex;
     gap: 10px;
@@ -86,7 +86,7 @@ span.symbolX {
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
     padding: 15px;
-    border-radius: 15px;
+    border-radius: 18px;
     aspect-ratio: 1/1;
 }
 
@@ -95,8 +95,8 @@ span.symbolX {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 12px;
-    font-size: 50px;
+    border-radius: 16px;
+    font-size: 48px;
     font-weight: 700;
     cursor: pointer;
     aspect-ratio: 1/1;
@@ -124,8 +124,8 @@ span.symbolX {
     justify-content: center;
     background: var(--reset-btn-bg-color);
     margin-top: 20px;
-    border-radius: 12px;
-    padding: 12px;
+    border-radius: 14px;
+    padding: 14px;
 }
 
 .reset_btn {
@@ -138,10 +138,14 @@ span.symbolX {
     text-align: center;
 }
 
-/* ================= RESPONSIVE ================= */
+/* ================= MOBILE FIX ================= */
 
-/* Mobile */
 @media (max-width: 767px) {
+
+    .tic_tac_toe_box {
+        align-items: flex-start;  /* move content upward */
+        padding-top: 50px;
+    }
 
     .tic_tac_toe_wrapper {
         max-width: 320px;
@@ -165,7 +169,8 @@ span.symbolX {
     }
 }
 
-/* Large Screens */
+/* ================= LARGE SCREEN ================= */
+
 @media (min-width: 1200px) {
     .tic_tac_toe_wrapper {
         max-width: 420px;
