@@ -8,26 +8,31 @@
 
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    margin: 0;
     font-family: sans-serif;
 }
 
+/* ================= MAIN CONTAINER ================= */
+
 .tic_tac_toe_box {
     background-color: var(--background-bg-color);
-    min-height: 100vh;
+    min-height: 100dvh; /* FIXED mobile height issue */
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 15px;
 }
 
 .tic_tac_toe_wrapper {
     width: 100%;
     max-width: 400px;
 }
+
+/* ================= PLAYER SECTION ================= */
 
 .player_name {
     display: flex;
@@ -53,6 +58,7 @@ body {
     width: 100%;
     color: #fff;
     font-weight: 600;
+    font-size: 16px;
 }
 
 p.move {
@@ -71,6 +77,8 @@ span.symbolX {
 .player_2 span.symbolX {
     color: var(--player2-color-bg);
 }
+
+/* ================= GAME GRID ================= */
 
 .sccreen {
     background-color: var(--box-background-color);
@@ -92,13 +100,14 @@ span.symbolX {
     font-weight: 700;
     cursor: pointer;
     aspect-ratio: 1/1;
-    transition: 0.2s;
+    transition: 0.2s ease;
 }
 
 .sccreen .box:hover {
     transform: scale(1.05);
 }
 
+/* X and O Colors */
 .x_symbol {
     color: #7ABA3B;
 }
@@ -107,14 +116,16 @@ span.symbolX {
     color: #FD9D8E;
 }
 
+/* ================= RESET BUTTON ================= */
+
 .sccreen_bottom {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #fff;
+    background: var(--reset-btn-bg-color);
     margin-top: 20px;
     border-radius: 12px;
-    padding: 10px;
+    padding: 12px;
 }
 
 .reset_btn {
@@ -127,7 +138,9 @@ span.symbolX {
     text-align: center;
 }
 
-/* ================= MOBILE (0px - 767px) ================= */
+/* ================= RESPONSIVE ================= */
+
+/* Mobile */
 @media (max-width: 767px) {
 
     .tic_tac_toe_wrapper {
@@ -142,41 +155,18 @@ span.symbolX {
         font-size: 22px;
     }
 
-    .sccreen .box {
-        font-size: 9vw;
-    }
-}
-
-
-/* ================= TABLET (768px - 991px) ================= */
-@media (min-width: 768px) and (max-width: 991px) {
-
-    .tic_tac_toe_wrapper {
-        max-width: 380px;
+    .sccreen {
+        gap: 8px;
+        padding: 10px;
     }
 
     .sccreen .box {
-        font-size: 45px;
+        font-size: 8vw;
     }
 }
 
-
-/* ================= LAPTOP (992px - 1199px) ================= */
-@media (min-width: 992px) and (max-width: 1199px) {
-
-    .tic_tac_toe_wrapper {
-        max-width: 400px;
-    }
-
-    .sccreen .box {
-        font-size: 50px;
-    }
-}
-
-
-/* ================= DESKTOP (1200px - 1400px+) ================= */
+/* Large Screens */
 @media (min-width: 1200px) {
-
     .tic_tac_toe_wrapper {
         max-width: 420px;
     }
