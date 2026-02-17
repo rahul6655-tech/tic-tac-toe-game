@@ -16,11 +16,9 @@ body {
     font-family: sans-serif;
 }
 
-/* ================= MAIN CONTAINER ================= */
-
 .tic_tac_toe_box {
     background-color: var(--background-bg-color);
-    min-height: 100dvh; /* mobile safe height */
+    min-height: 100dvh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,8 +29,6 @@ body {
     width: 100%;
     max-width: 400px;
 }
-
-/* ================= PLAYER SECTION ================= */
 
 .player_name {
     display: flex;
@@ -48,8 +44,10 @@ body {
     padding: 12px;
     border-radius: 12px;
     display: flex;
-    gap: 10px;
-    align-items: center;
+    flex-direction: column;
+    gap: 6px;
+    position: relative;
+    overflow: hidden;
 }
 
 .player_name_wrapper {
@@ -65,20 +63,42 @@ p.move {
     margin: 0;
 }
 
-span.symbolX {
+.symbolX {
     font-size: 28px;
     font-weight: 800;
 }
 
-.player_1 span.symbolX {
+.player_1 .symbolX {
     color: var(--player1-color-bg);
 }
 
-.player_2 span.symbolX {
+.player_2 .symbolX {
     color: var(--player2-color-bg);
 }
 
-/* ================= GAME GRID ================= */
+.turn_timer {
+    font-size: 13px;
+    color: #fff;
+}
+
+
+.player_1.active::before,
+.player_2.active::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 3px;
+    border-radius: 12px;
+    background: conic-gradient(#00ffcc var(--progress, 0%),
+            transparent 0%);
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
 
 .sccreen {
     background-color: var(--box-background-color);
@@ -96,7 +116,7 @@ span.symbolX {
     align-items: center;
     justify-content: center;
     border-radius: 16px;
-    font-size: 48px;
+    font-size: clamp(32px, 6vw, 48px);
     font-weight: 700;
     cursor: pointer;
     aspect-ratio: 1/1;
@@ -107,7 +127,6 @@ span.symbolX {
     transform: scale(1.05);
 }
 
-/* X and O Colors */
 .x_symbol {
     color: #7ABA3B;
 }
@@ -116,34 +135,31 @@ span.symbolX {
     color: #FD9D8E;
 }
 
-/* ================= RESET BUTTON ================= */
-
 .sccreen_bottom {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--reset-btn-bg-color);
     margin-top: 20px;
     border-radius: 14px;
     padding: 14px;
+    flex-direction: column;
+    gap: 12px;
 }
 
+#startBtn,
 .reset_btn {
+    padding: 8px 20px;
     border: none;
-    background: none;
-    font-size: 16px;
-    font-weight: 600;
+    border-radius: 8px;
     cursor: pointer;
+    font-weight: 600;
     width: 100%;
-    text-align: center;
 }
-
-/* ================= MOBILE FIX ================= */
 
 @media (max-width: 767px) {
 
     .tic_tac_toe_box {
-        align-items: flex-start;  /* move content upward */
+        align-items: flex-start;
         padding-top: 50px;
     }
 
@@ -155,7 +171,7 @@ span.symbolX {
         font-size: 14px;
     }
 
-    span.symbolX {
+    .symbolX {
         font-size: 22px;
     }
 
@@ -163,20 +179,27 @@ span.symbolX {
         gap: 8px;
         padding: 10px;
     }
-
-    .sccreen .box {
-        font-size: 8vw;
-    }
 }
 
-/* ================= LARGE SCREEN ================= */
+
+@media (max-width: 480px) {
+
+    .player_name {
+        flex-direction: column;
+    }
+
+    .player_1,
+    .player_2 {
+        width: 100%;
+    }
+
+    .sccreen {
+        gap: 6px;
+    }
+}
 
 @media (min-width: 1200px) {
     .tic_tac_toe_wrapper {
         max-width: 420px;
-    }
-
-    .sccreen .box {
-        font-size: 55px;
     }
 }
