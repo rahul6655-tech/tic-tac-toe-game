@@ -103,8 +103,6 @@ function autoMoveRandom(){
     }
 }
 
-/* ================= PLACE MOVE ================= */
-
 function placeMove(box){
 
     if(flag){
